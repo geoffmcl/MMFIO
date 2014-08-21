@@ -3,9 +3,9 @@ CWinMMFIO class Project
 
 This is an exercise in using the CWinMMFIO class.
 
-MMFIO.exe - demostrates copying data from one file to another in this case using memory mapping.
+_MMFIO.exe_ - demostrates copying data from one file to another in this case using memory mapping.
 
-MMBS.exe - demonstrates using memory mapping in a backing store file.
+_MMBS.exe_ - demonstrates using memory mapping in a backing store file.
 
 Since this is all about the Windows memory mapping of files, it will only compile in Windows.
 
