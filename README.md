@@ -23,7 +23,7 @@ copy data from one file to another using memory mapping.
 
 ### Simplest Usage:
 
-> MMFIO <no command>
+&gt; MMFIO &lt;no command&gt;
 
 Will create TWO temporary files, in the folder pointed to by the 'TMP', 'TEMP', ...
 environment variables.
@@ -40,12 +40,12 @@ in blocks of BLOCK_SIZE, and Write to the out_file.
 
 ### Optional Useage:
 
-> MMFIO [Options] [in_file [out_file]]
+&gt; MMFIO [Options] [in_file [out_file]]
 
 Options:  
 --help    (-h or -?) = This help, and exit(2)  
---block <size>  (-b) = Set a new block size for each read/write. (def=4,096)  
---random <size> (-r) = Set the random file size when generating an in_file. (def=3,846,814,168)  
+--block &lt;size&gt;  (-b) = Set a new block size for each read/write. (def=4,096)  
+--random &lt;size&gt; (-r) = Set the random file size when generating an in_file. (def=3,846,814,168)  
 
 As indicated above if no in_file (or out_file) are given then temporary files will be created, 
 which are deleted at exit.
@@ -179,12 +179,12 @@ value later.
 
 *Class Template*
 
-template <typename TValue>  
+template &lt;typename TValue&gt;  
 class MmapBS {
 
 Allows the user to define the nature of the storage, like -
 
-typedef MmapBS<uint64_t> storage_mmap_t;
+typedef MmapBS&lt;uint64_t&gt; storage_mmap_t;
 
 to store uint64_t values in the file. The file offset for the storeage will be at an id times 
 the size of the TValue.
