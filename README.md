@@ -191,7 +191,7 @@ the size of the TValue.
 
 *Class Definition*
 
-*** bool Open(const std::string& infile="", bool remove=true)
+##### bool Open(const std::string& infile="", bool remove=true)
 
 Open the backing store either using the supplied infile name, or a 'temporary' file name if 
 none given. If an infile given, it will be created if not existing, or overwritting any 
@@ -199,12 +199,12 @@ existing file. Any path to this file must already exist. Paths will not be creat
 
 Will return true if successful.
 
-***  bool set(const uint64_t id, const TValue value) {
+#####  bool set(const uint64_t id, const TValue value) {
 
 Store the TValue value at the 'id' location, for later accessing. The 'id' can be beyond the 
 current store size. It will be expanded to store the value.
 
-*** TValue operator[](uint64_t id) {
+##### TValue operator[](uint64_t id) {
 
 Access the value for an 'id' from the backing store. The 'id' must be within the current 
 store size. Will throw a std::bad_alloc() if the accessing fails.
