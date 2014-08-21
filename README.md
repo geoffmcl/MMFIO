@@ -237,8 +237,9 @@ Files: org-zip/MMFIO_CP.zip
 
 Original 2009 zip file.
 
-The original source site is - 
- http://www.codeproject.com/Articles/37201/Simple-File-I-O-Using-Windows-Memory-Mapped-Files
+The original source site is at <a target="_blank" 
+href="http://www.codeproject.com/Articles/37201/Simple-File-I-O-Using-Windows-Memory-Mapped-Files">CodeProject</a>
+
  
 Have fun.
 
@@ -246,4 +247,4 @@ Geoff.
 email: reports _AT_ geoffair _DOT_ info  
 20140820
 
-# eof
+####### eof
