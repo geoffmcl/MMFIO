@@ -21,7 +21,7 @@ Defines the entry point for the console application.
 The main purpose is simply as an EXAMPLE use of the CWinMMFIO class to
 copy data from one file to another using memory mapping.
 
-#### Simplest Usage:
+##### Simplest Usage:
 
 &gt; MMFIO &lt;no command&gt;
 
@@ -38,7 +38,7 @@ done on files of zero length.
 Then the class CWinMMFIO will be used to Open both files, and the data will be Read from the in_file,
 in blocks of BLOCK_SIZE, and Write to the out_file.
 
-#### Optional Useage:
+##### Optional Useage:
 
 &gt; MMFIO [Options] [in_file [out_file]]
 
@@ -86,7 +86,7 @@ DWORD GetMMFLastErrorValue() { return m_dwLastErr; }
 
 *Interface description:*
 
-#### bool Open(const sstring& strfile, OPENFLAGS oflags, bool extend = false, suint64 len = 1);
+##### bool Open(const sstring& strfile, OPENFLAGS oflags, bool extend = false, suint64 len = 1);
 
 Opens the file strfile in the access mode defined in the parameter oflags; the OPENFLAGS enumerator 
 has two constants, OPN_READ and OPN_READWRITE. A zero byte file cannot be opened either for reading 
@@ -94,11 +94,11 @@ or writing, hence the extend and length optional parameters.
 
 If extend is set true, then the file size will be extended (or truncated) to the given lenght.
 
-#### bool Close();
+##### bool Close();
 
 Unmaps the view of the file, and closes open HANDLEs to the file mapping object and the opened file.
 
-#### int Read(void* pBuf, quint nCount);
+##### int Read(void* pBuf, quint nCount);
 
 Reads nCount number of bytes into the buffer pBuf; if nCount number of bytes are not available, 
 then Read reads as many bytes available from the current position to the end of the file.
@@ -107,7 +107,7 @@ The caller must ensure that the buffer pBuf is at least nCount number of bytes w
 returns the actual number of bytes read. If the current file pointer position is at the end of the 
 file and nCount is greater than zero, then Read returns zero.
 
-#### int Write(void* pBuf, quint nCount);
+##### int Write(void* pBuf, quint nCount);
 
 Writes nCount number of bytes from pBuf to the file starting from the current file pointer position. 
 The file size is extended by a quantum of 64 KB, determined by the GetSystemInfo(), dwAllocationGranularity,
@@ -116,7 +116,7 @@ variable m_lExtendOnWriteLength.
 
 The file will be restored to its actual length when necessary.
 
-#### bool Seek(sint64 lOffset, SEEKPOS eseekpos, bool extend = false);
+##### bool Seek(sint64 lOffset, SEEKPOS eseekpos, bool extend = false);
 
 Sets the current file pointer to the location specified by lOffset relative to SEEKPOS eseekpos. 
 The SEEKPOS enumerator has three constants SP_BEGIN, SP_CUR, and SP_END. SP_BEGIN specifies that 
@@ -129,11 +129,11 @@ plus the value in the m_dwPageSize, 4 KB.
 
 The file will be restored to its actual length when necessary.
 
-#### suint64 GetPosition();
+##### suint64 GetPosition();
 
 Returns the current file pointer position.
 
-#### bool GetLength( suint64 & nLength );
+##### bool GetLength( suint64 & nLength );
 
 Returns the actual length of the file in bytes if true returned.
 
@@ -145,7 +145,7 @@ In most cases the GetMMFLastErrorValue will return a windows DWORD error value, 
 can be passed to the system function FormatMessage to get an error string.
 
 
-#### bool SetLength(const sint64& nLength);
+##### bool SetLength(const sint64& nLength);
 
 Sets the length of the file to nLength bytes. If the length cannot be set, the return value will 
 be false. 
@@ -154,11 +154,11 @@ Call GetMMFLastError and/or GetMMFLastErrorValue to get the error message and va
 In most cases the GetMMFLastErrorValue will return a windows DWORD error value, which 
 can be passed to the system function FormatMessage to get an error string.
 
-#### void GetMMFLastError(sstring& strErr);
+##### void GetMMFLastError(sstring& strErr);
 
 Call GetMMFLastError to get the error message in the form of a string whenever a function fails.
 
-#### DWORD GetMMFLastErrorValue();
+##### DWORD GetMMFLastErrorValue();
 
 Call GetMMFLastErrorValue to get the error message in the form of a string whenever a function fails.
 
