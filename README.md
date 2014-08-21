@@ -3,7 +3,9 @@ CWinMMFIO class Project
 
 This is an exercise in using the CWinMMFIO class.
 
-It demostrates copying data from one file to another in this case using memory mapping.
+MMFIO.exe - demostrates copying data from one file to another in this case using memory mapping.
+
+MMBS.exe - demonstrates using memory mapping in a backing store file.
 
 Since this is all about the Windows memory mapping of files, it will only compile in Windows.
 
@@ -16,7 +18,8 @@ build-me.bat in the 'build' folder.
 Files: MMFIO.cpp MMFIO.h
 ------------------------
 
-Defines the entry point for the console application.
+MMFIO.exe:  Defines the entry point for the console application, setup and use of CWinMMFIO
+class.
 
 The main purpose is simply as an EXAMPLE use of the CWinMMFIO class to
 copy data from one file to another using memory mapping.
@@ -60,7 +63,9 @@ BE WARNED: This is test example application and is NOT intended as a SAFE file c
 Files: MMFIODef.cpp MMFIODef.h
 ------------------------------
 
-*Class definition:*
+Built into a static library, MMFIODef.lib, for use by other application
+
+#### Class definition:
 
 Public Interface of the CWinMMFIO class :-
 
@@ -84,7 +89,7 @@ bool SetLength(const sint64& nLength);
 void GetMMFLastError(sstring& strErr) { strErr = m_strErrMsg; }  
 DWORD GetMMFLastErrorValue() { return m_dwLastErr; }  
 
-*Interface description:*
+#### Interface description:
 
 ##### bool Open(const sstring& strfile, OPENFLAGS oflags, bool extend = false, suint64 len = 1);
 
@@ -168,16 +173,18 @@ can be passed to the system function FormatMessage to get an error string.
 Files: utils.cxx utils.hxx
 --------------------------
 
-Just a bunch of utility functions...
+Built into a static library, genutil.lib, for use in the applications.
+
+Just a big bunch of utility functions...
 
 Files: MMBS.cxx MMBS.hxx
 ------------------------
 
-An example application using the CWinMMFIO class to create a 'temporary' or 'permanent 
+MMBS.exe: An example application using the CWinMMFIO class to create a 'temporary' or 'permanent 
 backing store file using memory mapping to set values in the file, and retrieve that 
 value later.
 
-*Class Template*
+##### Class Template
 
 template &lt;typename TValue&gt;  
 class MmapBS {
@@ -189,9 +196,9 @@ typedef MmapBS&lt;uint64_t&gt; storage_mmap_t;
 to store uint64_t values in the file. The file offset for the storeage will be at an id times 
 the size of the TValue.
 
-*Class Definition*
+##### Class Definition
 
-##### bool Open(const std::string& infile="", bool remove=true)
+###### bool Open(const std::string& infile="", bool remove=true)
 
 Open the backing store either using the supplied infile name, or a 'temporary' file name if 
 none given. If an infile given, it will be created if not existing, or overwritting any 
@@ -199,12 +206,12 @@ existing file. Any path to this file must already exist. Paths will not be creat
 
 Will return true if successful.
 
-#####  bool set(const uint64_t id, const TValue value) {
+######  bool set(const uint64_t id, const TValue value) {
 
 Store the TValue value at the 'id' location, for later accessing. The 'id' can be beyond the 
 current store size. It will be expanded to store the value.
 
-##### TValue operator[](uint64_t id) {
+###### TValue operator[](uint64_t id) {
 
 Access the value for an 'id' from the backing store. The 'id' must be within the current 
 store size. Will throw a std::bad_alloc() if the accessing fails.
