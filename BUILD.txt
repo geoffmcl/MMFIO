@@ -1,0 +1,38 @@
+File: BUILD.txt
+
+==================
+'build' directory
+==================
+
+This is a cmake - http://www.cmake.org/cmake/resources/software.html - build project
+
+cmake is best run in an out-of-source folder. In this case the 'build' directory contains
+a build-me.bat file to do teh configuration, generation and compile of the project.
+
+If you have MSVC correctly install, cmake will default to generating a MSVC solution 
+file, MMFIO.sln.
+
+To run cmake in the default modes, it is only necessary to -
+<source> cd build
+<source\build> cmake .. [Generator]
+
+Running cmake without any parameters will list the 'generators' available on your platform.
+They should include several versions of MSVC, NMake build files, Watcom, MSYS, MingW, plus 
+others.
+
+=====================
+'build.x64' directory
+=====================
+
+If you have a 64-bit install of MSVC then this folder constains a build-me.bat to build 
+a 64-bit version.
+
+=====================
+
+Have fun.
+
+Geoff.
+email: reports _AT_ geoffair _DOT_ info
+20140820
+
+# eof
